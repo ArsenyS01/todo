@@ -21,11 +21,5 @@ def delete_todo(index):
         del tasks[index]
     return redirect(url_for('todo_app'))
 
-# @app.route('/toggle/<int:index>')
-# def toggle_todo(index):
-#     if 0 <= index < len(tasks):
-#         tasks[index]['completed'] = not tasks[index]['completed']
-#     return redirect(url_for('todo_app'))
-
 if __name__ == '__main__':
     app.run(debug=True)
