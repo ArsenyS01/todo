@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="todoList">
+    <div class="content">
+      <div class="input-buttons">
+        <form action="{{ url_for('add_todo') }}" method="post" class="add">
+          <input id="inp" type="text" name="add" placeholder="Add item...">
+           <button type="submit">
+            <i class="fas fa-plus add plus-icon"></i>
+          </button>
+        </form>
+       
+      </div>
+      <ul class="todos align">
+        {% for task in tasks %}
+        <li>
+          <input type="checkbox" id="{{ loop.index0 }}">
+          <!-- <input type="checkbox" id="{{ loop.index0 }}" {% if task.completed %}checked{% endif %}> -->
+          <label for="{{ loop.index0 }}">
+            <span class="check"></span>
+            {{ task.text }}
+          </label>
+          <a href="{{ url_for('delete_todo', index=loop.index0) }}" class="delete">
+            <i class="far fa-trash-alt"></i>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="todoList">
+    <div class="content">
+      <div class="input-buttons">
+          <a href="#0" class="add-todo">
+            <i class="fas fa-plus add plus-icon"></i>
+          </a>
+        </div>
+      <form class="add">
+        <input id="inp" type="text" name="add" placeholder="Add item...">
+        
+      </form>
+      <ul class="todos align">
+        {% for task in tasks %}
+        <li>
+          <input type="checkbox" id="{{ task.id }}">
+          <label for="{{ task.id }}">
+            <span class="check"></span>
+            {{ task.text }}
+          </label>
+          <i class="far fa-trash-alt delete"></i>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div> -->
+
+</body>
+
+<!-- <script src="{{ url_for('static', filename='main.js') }}"></script> -->
+
+</html>
