@@ -13,7 +13,6 @@ def add_todo():
     new_task = request.form.get('add')
     if new_task:
         tasks.append({'text': new_task})
-        # tasks.append({'text': new_task, 'completed': False})
     return redirect(url_for('todo_app'))
 
 @app.route('/delete/<int:index>')
